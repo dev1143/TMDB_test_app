@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import useEffect  from "react";
+import useEffect from "react";
 import "./App.css";
 import {
   createBrowserRouter,
@@ -10,12 +10,12 @@ import {
 } from "react-router-dom";
 import MainNavigation from "./Components/MainNavigation";
 import ErrorPage from "./ErrorPage";
-import MovieComp from "./Components/MainMovieComp";
+import PopularMovies from "./Components/PopularMovies";
 import NowPlaying from "./Components/NowPlaying";
 
 function App() {
   // useEffect(() => {
-    
+
   // }, [])
   // const {pathname}=useLocation();
   // console.log('pathname',pathname)
@@ -25,17 +25,17 @@ function App() {
       element: <MainNavigation />,
       children: [
         {
-          path: "/popular",
-          element: <MovieComp />,
+          path: "/movie/popular",
+          element: <PopularMovies />,
           errorElement: <ErrorPage />,
         },
         {
-          path: "/nowplaying",
+          path: "/movie/now-playing",
           element: <NowPlaying />,
           errorElement: <ErrorPage />,
         },
         // {
-        //   path: "/popular",
+        //   path: "/movie/upcoming",
         //   element: <MovieComp />,
         //   errorElement: <ErrorPage />,
         // },
