@@ -24,7 +24,6 @@ import { useLocation } from "react-router-dom";
 import Popper from "@mui/material/Popper";
 import Popover from "@mui/material/Popover";
 // import { makeStyles } from "@material-ui/core/styles";
-import MovieCard from "./MovieCards";
 import { MenuList } from "@mui/material";
 import { TryOutlined } from "@mui/icons-material";
 

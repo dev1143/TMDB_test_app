@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import useEffect from "react";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   createBrowserRouter,
   RouterProvider,
