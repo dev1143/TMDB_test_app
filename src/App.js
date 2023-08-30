@@ -19,11 +19,12 @@ import NowPlaying from "./Components/NowPlaying";
 import PopularMovieDescription from "./Components/PopularMovieDescription";
 import Navbar from "./Components/Navbar";
 import React, { useReducer, createContext } from "react";
-import { initialValues, reducer } from "./Reducers/PopularMoviesreducer";
+import {tablereducer}  from "./Reducers/PopularMoviesreducer";
+import CustomContext from "./CustomContext";
 
+// export const CustomContext = createContext();
 function App() {
-  const CustomContext = createContext();
-  const [state, dispatch] = React.useReducer(reducer, initialValues);
+  const [state, dispatch] = React.useReducer(tablereducer, []);
 
   const providerState = {
     state,
@@ -71,10 +72,10 @@ function App() {
   ];
   const router = createBrowserRouter(routes);
   return (
+       <CustomContext.Provider value={providerState}> 
     <div className="App">
-      <CustomContext.Provider value={providerState}>
         <Router>
-          <Navbar />
+          <Navbar/>
           <Routes>
             <Route exact path="/movie/popular" element={<PopularMovies />} />
             <Route exact path="/movie/now-playing" element={<NowPlaying />} />
@@ -85,9 +86,9 @@ function App() {
             />
           </Routes>
         </Router>
-      </CustomContext.Provider>
       {/* <RouterProvider router={router} /> */}
     </div>
+       </CustomContext.Provider> 
   );
 }
 

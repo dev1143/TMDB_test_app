@@ -1,13 +1,23 @@
-import React from 'react';
+import React,{useReducer,useContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initialValues, reducer } from './Reducers/PopularMoviesreducer';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// const [state,dispatch]=useReducer(reducer,initialValues);
+// const providerState = {
+//   state,
+//   dispatch,
+// };
+const CustomContext=React.createContext();
 root.render(
   <React.StrictMode>
+    {/* <CustomContext.Provider value={providerState}> */}
     <App />
+    {/* </CustomContext.Provider> */}
   </React.StrictMode>
 );
 

@@ -10,13 +10,15 @@ import Stack from "@mui/material/Stack";
 import Fab from "@mui/material/Fab";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useReducer } from "react";
-import { reducer, initialValues } from "../Reducers/PopularMoviesreducer";
+import { reducer, initialValues, tablereducer } from "../Reducers/PopularMoviesreducer";
 import { useNavigate } from "react-router-dom";
+import { useCustomContext } from "../CustomContext";
 
 function PopularMovieCard({ data }) {
   const navigate = useNavigate();
   const [moviecard, setMoviecard] = useState(null);
-  const [state, dispatch] = useReducer(reducer, initialValues);
+  // const [state, dispatch] = useReducer(tablereducer, initialValues);
+  const {state,dispatch}=useCustomContext()
   useEffect(() => {
     if (data && Object.prototype.toString.call(data) == "[object Object]") {
       setMoviecard(data);

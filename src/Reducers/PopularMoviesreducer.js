@@ -1,19 +1,17 @@
-const initialValues = {
-  id: 0,
-  completed: false,
-};
+// const initialValues = {
+//   id: 0,
+//   completed: false,
+// };
 
-const reducer = (state = initialValues, action) => {
+export const tablereducer = (state = [], action) => {
   switch (action.type) {
-    case "passvalue": {
-      return {
-        ...state,
-        id: action.payload,
-      };
-    }
+    case 'passvalue':
+        state = JSON.parse(JSON.stringify(action.payload));
+        return state;
     default:
-      return state;
-  }
+        return state
+}
+
 };
 
-export { reducer, initialValues };
+// export { reducer, initialValues };

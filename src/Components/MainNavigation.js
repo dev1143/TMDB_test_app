@@ -26,7 +26,7 @@ import { initialValues, reducer } from "../Reducers/PopularMoviesreducer";
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function MainNavigation() {
-  const [state, dispatch] = useReducer(reducer, initialValues);
+  // const [state, dispatch] = useReducer(reducer, initialValues);
   // const navigation = useNavigation();
   const location = useLocation();
   const [prevLoc, setPrevLoc] = useState("");
