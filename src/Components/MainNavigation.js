@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useLayoutEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { useNavigation } from "react-router-dom";
+// import { useNavigation } from "react-router-dom";
 import LinearProgress from "@mui/material/LinearProgress";
 // import * as React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 
 import Navbar from "./Navbar";
+import { initialValues, reducer } from "../Reducers/PopularMoviesreducer";
 
 // const pages = [
 //   { name: "Movies", path: "movie" },
@@ -25,11 +26,12 @@ import Navbar from "./Navbar";
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function MainNavigation() {
-  const navigation = useNavigation();
+  const [state, dispatch] = useReducer(reducer, initialValues);
+  // const navigation = useNavigation();
   const location = useLocation();
   const [prevLoc, setPrevLoc] = useState("");
   const [progress, setProgress] = useState(false);
-  console.log("progress state==>", navigation, navigation.state);
+  // console.log("progress state==>", navigation, navigation.state);
 
   // useEffect(() => {
   //   setPrevLoc(location.pathname);
