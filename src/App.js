@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import useEffect from "react";
+import useEffect, { useContext } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet } from "react-router-dom";
@@ -21,10 +21,14 @@ import Navbar from "./Components/Navbar";
 import React, { useReducer, createContext } from "react";
 import {tablereducer}  from "./Reducers/PopularMoviesreducer";
 import CustomContext from "./CustomContext";
+import {Progress} from "./Loader";
+import SnackBar from "./Loader/SnackBar";
+
 
 // export const CustomContext = createContext();
 function App() {
   const [state, dispatch] = React.useReducer(tablereducer, []);
+const value=useContext(CustomContext)
 
   const providerState = {
     state,
@@ -75,6 +79,7 @@ function App() {
        <CustomContext.Provider value={providerState}> 
     <div className="App">
         <Router>
+          <SnackBar/>
           <Navbar/>
           <Routes>
             <Route exact path="/movie/popular" element={<PopularMovies />} />

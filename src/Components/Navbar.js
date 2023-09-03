@@ -26,6 +26,7 @@ import Popover from "@mui/material/Popover";
 // import { makeStyles } from "@material-ui/core/styles";
 import { MenuList } from "@mui/material";
 import { TryOutlined } from "@mui/icons-material";
+import { Progress } from "../Loader";
 
 function HideOnScroll(props) {
   const { children, window } = props;

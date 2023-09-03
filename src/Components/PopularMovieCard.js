@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -13,12 +13,14 @@ import { useReducer } from "react";
 import { reducer, initialValues, tablereducer } from "../Reducers/PopularMoviesreducer";
 import { useNavigate } from "react-router-dom";
 import { useCustomContext } from "../CustomContext";
+import CustomContext from "../CustomContext";
 
 function PopularMovieCard({ data }) {
   const navigate = useNavigate();
   const [moviecard, setMoviecard] = useState(null);
   // const [state, dispatch] = useReducer(tablereducer, initialValues);
   const {state,dispatch}=useCustomContext()
+   
   useEffect(() => {
     if (data && Object.prototype.toString.call(data) == "[object Object]") {
       setMoviecard(data);
@@ -39,6 +41,7 @@ function PopularMovieCard({ data }) {
   console.log("inidividual id to populate==>", state.id, moviecard?.id);
 
   return (
+    <>
     <Card
       style={{ position: "relative" }}
       sx={{ height: 500, maxWidth: 250, marginBottom: "15px" }}
@@ -109,6 +112,7 @@ function PopularMovieCard({ data }) {
       <Button size="small">Learn More</Button>
     </CardActions> */}
     </Card>
+    </>
   );
 }
 export default PopularMovieCard;

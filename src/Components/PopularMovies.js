@@ -11,10 +11,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { useCustomContext } from "../CustomContext";
+import ProgressBar from "@badrap/bar-of-progress";
 
 export default function PopularMovies() {
+  const progress = new ProgressBar({
+    size:5,
+    color:'red'
+  });
   const [loader, setLoader] = useState(false);
   const [PopularMovies, setPopularMovies] = useState(null);
+  const {state,dispatch}=useCustomContext()
 
   // const navigation = useNavigation();
   // const data = useLoaderData();
@@ -51,12 +58,18 @@ export default function PopularMovies() {
 
   useEffect(() => {
     async function fetchPopularMovies() {
+      progress.start();
       setLoader(true);
+     
       const response = await axios
         .get(requestmovies.fetch_popular_movies)
         .then((res) => {
           if (res && res.status == 200) {
+            setTimeout(()=>{
+              progress.finish()
+            },400)
             setLoader(false);
+            
             if (res.data) {
               let actualsetofMovies = res?.data?.results;
               setPopularMovies(
@@ -96,7 +109,7 @@ export default function PopularMovies() {
     <div style={{ marginTop: "73px" }}>
       <div>
         {loader ? (
-          <LinearProgress />
+          <p>Loading...</p>
         ) : (
           <>
             <Container>
